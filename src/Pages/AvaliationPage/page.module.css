@@ -48,3 +48,20 @@
     font-weight: bold;
     margin-left: 10px;
 }
+
+@media only screen and (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+
+    .avaliation_area {
+        max-width: 90%;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .avaliation_area {
+        max-width: 95%;
+    }
+}

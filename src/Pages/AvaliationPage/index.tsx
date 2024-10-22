@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, CSSProperties } from "react";
 import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 
-import { DcpButton, DcpIcon } from "@codecompanybrasil/discipline-core";
+import { DcpButton, DcpIcon, DcpMobileButton } from "@codecompanybrasil/discipline-core";
 
 import { Cronometro, Exclamation, Settings } from "@codecompanybrasil/discipline-core/dist/esm/components/DcpIcon";
 import { Bar } from "@codecompanybrasil/discipline-core/dist/esm/components/DcpBar";
@@ -32,6 +32,7 @@ function AvaliationPage() {
     const [warningDisplay, setWarningDisplay] = useState<boolean>(sessionStorage.getItem(`avaliation_${hash}_status`) ? false : true)
     const [correctionPage, setCorrectionPage] = useState<boolean>(false)
     const [progressBarValue, setProgressBarValue] = useState<number>(0)
+    const [menuMobileStyle, setMenuMobileStyle] = useState<CSSProperties>({visibility: "visible"})
     const [finalWarningDisplay, setFinalWarningDisplay] = useState<boolean>(false)
     const [userName, setUserName] = useState<string>("")
     const [userEmail, setUserEmail] = useState<string>("")
@@ -188,7 +189,7 @@ function AvaliationPage() {
         const quantidadeRespondidas = resultsQuestions.length
 
         const progress = Number((quantidadeRespondidas * 100 / quantidadeQuestoes).toFixed(2))
-        setProgressBarValue(Number.isNaN(progress) ? 0 : progress)
+        setProgressBarValue(Number.isNaN(progress) ? 0 : Math.round(progress))
     }
 
     const descriptionWarning = `Essa prova é uma corrida contra o tempo! Ao iniciar, um cronômetro será acionado, e você terá um período determinado para demonstrar seu conhecimento. Fique atento(a) e use cada segundo sabiamente. 📚<br/><br/>Encare cada desafio com seriedade. Sua dedicação reflete diretamente no seu desempenho. ✨<br/></br>Estamos confiantes de que você pode brilhar! Boa sorte! 🍀`
@@ -222,6 +223,7 @@ function AvaliationPage() {
                                 hashAvaliation={hash} />
                         </WarningTemplate>
                     </div>
+                    {/* <DcpMobileButton  /> */}
                     <div className={styles.content}>
                         <div className={styles.avaliation_area}>
                             {/* {page !== "resultado" && ( */}
@@ -257,7 +259,7 @@ function AvaliationPage() {
                                 </>
                             )}
                         </div>
-                        <div className={styles.menu}>
+                        <div className={styles.menu} style={menuMobileStyle}>
                             <div className={styles.menu_fixed}>
                                 {/* <div className={styles.config_button}>
                                     <Settings color="black" />

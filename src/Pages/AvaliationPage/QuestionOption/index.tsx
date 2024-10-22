@@ -59,9 +59,7 @@ function QuestionOption({
         } else {
             console.log(`Marked: ${markedAlternative} | Sou select: ${selected}`)
             if (markedAlternative) {
-                setSelected(select => {
-                    return markedAlternative === data.hash
-                })
+                setSelected(markedAlternative === data.hash)
             } else {
                 setSelected(select => select ? false : select)
             }
