@@ -25,14 +25,14 @@ function AvaliationHeader({ correctionMode = false, title, userName, userEmail, 
                             <h2>{userName}</h2>
                         </div>
                     </div>
-                    <div className="row d-flex align-items-center mb-3">
+                    {/* <div className="row d-flex align-items-center mb-3">
                         <div className="col-auto">
                             <p>E-mail:</p>
                         </div>
                         <div className="col">
                             <h2>{userEmail}</h2>
                         </div>
-                    </div>
+                    </div> */}
                 </>
             ) : (
                 <>
@@ -53,7 +53,7 @@ function AvaliationHeader({ correctionMode = false, title, userName, userEmail, 
                         </div>
                     </div>
 
-                    <div className="row d-flex align-items-center mb-3">
+                    {/* <div className="row d-flex align-items-center mb-3">
                         <div className="col-auto">
                             <label htmlFor="email" className={styles.title}>
                                 E-mail:
@@ -68,7 +68,7 @@ function AvaliationHeader({ correctionMode = false, title, userName, userEmail, 
                                 ref={inputEmailRef}
                                 onChange={(event) => onChangeUserEmail(event.target.value)} />
                         </div>
-                    </div>
+                    </div> */}
                 </>
             )}
 
