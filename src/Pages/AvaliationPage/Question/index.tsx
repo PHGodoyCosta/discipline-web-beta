@@ -15,12 +15,13 @@ type QuestionHeaderItemProps = {
 }
 
 function QuestionHeaderItem({ content }: QuestionHeaderItemProps) {
+    
     const title = ('title' in content && content.title) ? (
         <h3 className={styles.title}>{content.title}</h3>
     ) : undefined
 
-    const image = ('image_source' in content && content.image_source) ? (
-        <img className={styles.image} src={content.image_source} alt={content.caption ?? ""} />
+    const image = ('image' in content && content.image[0].image_source) ? (
+        <img className={styles.image} src={String(content.image[0].image_source).replace("<host>", String(process.env.REACT_APP_API_URL))} alt={content.caption ?? ""} />
     ) : undefined
 
     const text = ('snippet' in content && content.snippet) ? (
